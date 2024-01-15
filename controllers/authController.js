@@ -4,7 +4,7 @@ import jwt from "jsonwebtoken"
 import orderModel from "../models/orderModel.js"
 export const registerController=async(req,res)=>{
     try{
-       const{name,email,password,phone,address,answer}=req.body
+       const{name,email,password,phone,address,answer,role}=req.body
        
        if(!name){
         return res.send({message:"Name is Required"})
@@ -34,7 +34,7 @@ export const registerController=async(req,res)=>{
             })
           }
        const hashedPass=await hashedPassword(password)
-       const user=await new usermodel({name,email,phone,address,password:hashedPass,answer}).save()
+       const user=await new usermodel({name,email,phone,address,password:hashedPass,answer,role}).save()
       res.status(200).send({
         success:true,
         message:"User Register Successfully",

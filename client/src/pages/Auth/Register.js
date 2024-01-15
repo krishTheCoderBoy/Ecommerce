@@ -11,6 +11,7 @@ const Register = () => {
     const[phone,setPhone]=useState("")
     const[address,setAddress]=useState("")
     const[answer,setAnswer]=useState("")
+    const[role,setRole]=useState(0)
 
     const navigate=useNavigate();
 
@@ -18,7 +19,7 @@ const handlesubmit=async(e)=>{
     e.preventDefault();
     try{
         const res=await axios.post(`${process.env.REACT_APP_API}/api/v1/auth/register`,{
-            name,email,password,phone,address,answer
+            name,email,password,phone,address,answer,role
         });
         
         if(res.data.success){
@@ -69,6 +70,12 @@ const handlesubmit=async(e)=>{
                         <input type="text" value={answer} onChange={(e)=>setAnswer(e.target.value)}className="form-control" id="exampleInputEmail4" placeholder='What is Your Favourite sports'required />
 
                     </div>
+                    <div className="mb-3">
+                        
+                        <input type="number" value={role} onChange={(e)=>setRole(e.target.value)} className="form-control" id="exampleInputEmail4" placeholder='Enter your role' required />
+
+                    </div>
+
                     <button type="submit" className="btn btn-primary">REGISTER</button>
                 </form>
             </div>
