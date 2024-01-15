@@ -11,7 +11,7 @@ const Register = () => {
     const[phone,setPhone]=useState("")
     const[address,setAddress]=useState("")
     const[answer,setAnswer]=useState("")
-    const[role,setRole]=useState(0)
+    const[role,setRole]=useState()
 
     const navigate=useNavigate();
 
